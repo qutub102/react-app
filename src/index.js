@@ -1,15 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import store from './store'; 
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import store from "./store/store";
+import Home from "./components/Home/Home";
+import Form from "./components/Form/Form";
+import FormDetails from "./components/FormDetails/FormDetails";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        // path: "/form/:id",
+        path: "/form",
+        element: <Form />,
+      },
+      {
+        path: "/formDetails",
+        element: <FormDetails />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <App />
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
   </Provider>
 );
 

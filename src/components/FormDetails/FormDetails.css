@@ -1,0 +1,13 @@
+.customer-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.customer-info{
+  margin: 12px;
+}
+select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
